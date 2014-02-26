@@ -6,11 +6,11 @@ open Suave.Http
 open System.Net.Http
 open AsyncRestClient
 
-type Delete'() =
+type Delete'() as this =
     inherit BaseTest(OK "Hello")
 
-    let result = base.client "/" Delete |> Async.RunSynchronously
+    let result = base.client |> delete "/" |> Async.RunSynchronously
 
     [<Fact>]
     member x.``delete HttpMethod is used``() =
-        base.lastHttpMethod |> should equal System.Net.Http.HttpMethod.Delete
+        this.httpMethod |> should equal System.Net.Http.HttpMethod.Delete
