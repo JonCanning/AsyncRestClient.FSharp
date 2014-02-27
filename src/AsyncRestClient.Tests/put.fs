@@ -6,7 +6,7 @@ open Suave.Http
 open System.Net.Http
 open AsyncRestClient
 
-type Put'() as this = 
+type Put() as this = 
     inherit BaseTest(OK "Hello")
     
     let request = {Name = "Foo"}

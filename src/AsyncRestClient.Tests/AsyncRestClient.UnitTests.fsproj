@@ -62,15 +62,15 @@
   </ItemGroup>
   <ItemGroup>
     <Reference Include="FsUnit.CustomMatchers">
-      <HintPath>..\AsyncRestClient.FSharp\packages\FsUnit.xUnit.1.2.2.1\Lib\net40\FsUnit.CustomMatchers.dll</HintPath>
+      <HintPath>..\..\packages\FsUnit.xUnit.1.2.2.1\Lib\net40\FsUnit.CustomMatchers.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="FsUnit.Xunit">
-      <HintPath>..\AsyncRestClient.FSharp\packages\FsUnit.xUnit.1.2.2.1\Lib\net40\FsUnit.Xunit.dll</HintPath>
+      <HintPath>..\..\packages\FsUnit.xUnit.1.2.2.1\Lib\net40\FsUnit.Xunit.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="ManagedOpenSsl">
-      <HintPath>..\AsyncRestClient.FSharp\packages\Suave.0.3.0\lib\ManagedOpenSsl.dll</HintPath>
+      <HintPath>..\..\packages\Suave.0.4.0\lib\ManagedOpenSsl.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="mscorlib" />
@@ -78,11 +78,11 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="NHamcrest">
-      <HintPath>..\AsyncRestClient.FSharp\packages\FsUnit.xUnit.1.2.2.1\Lib\net40\NHamcrest.dll</HintPath>
+      <HintPath>..\..\packages\FsUnit.xUnit.1.2.2.1\Lib\net40\NHamcrest.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="suave">
-      <HintPath>..\AsyncRestClient.FSharp\packages\Suave.0.3.0\lib\suave.dll</HintPath>
+      <HintPath>..\..\packages\Suave.0.4.0\lib\suave.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
@@ -90,7 +90,7 @@
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Numerics" />
     <Reference Include="xunit">
-      <HintPath>..\AsyncRestClient.FSharp\packages\xunit.1.9.2\lib\net20\xunit.dll</HintPath>
+      <HintPath>..\..\packages\xunit.1.9.0.1566\lib\xunit.dll</HintPath>
       <Private>True</Private>
     </Reference>
   </ItemGroup>
@@ -101,6 +101,13 @@
       <Private>True</Private>
     </ProjectReference>
   </ItemGroup>
+  <Import Project="..\..\packages\Suave.0.4.0\build\suave.targets" Condition="Exists('..\..\packages\Suave.0.4.0\build\suave.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\..\packages\Suave.0.4.0\build\suave.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\Suave.0.4.0\build\suave.targets'))" />
+  </Target>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

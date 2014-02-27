@@ -6,7 +6,7 @@ open Suave.Http
 open System.Net.Http
 open AsyncRestClient
 
-type Delete'() as this =
+type Delete() as this =
     inherit BaseTest(OK "Hello")
 
     let result = base.client |> delete "/" |> Async.RunSynchronously
