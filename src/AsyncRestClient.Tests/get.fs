@@ -9,11 +9,11 @@ open AsyncRestClient
 type Get() as this =
     inherit BaseTest(OK "Hello")
 
-    let (Some response) = base.client |> get "/" |> Async.RunSynchronously
+    let (Some response) = this.client |> get "/" |> Async.RunSynchronously
 
     [<Fact>]
     member x.``response is returned``() = 
-        response |> should equal "Hello"
+        response.text |> should equal "Hello"
 
     [<Fact>]
     member x.``get HttpMethod is used``() =

@@ -54,11 +54,12 @@
   <ItemGroup>
     <Compile Include="baseTest.fs" />
     <Compile Include="delete.fs" />
-    <Compile Include="put.fs" />
     <Compile Include="get.fs" />
     <Compile Include="post.fs" />
+    <Compile Include="patch.fs" />
     <None Include="app.config" />
     <None Include="packages.config" />
+    <Compile Include="put.fs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="FsUnit.CustomMatchers">

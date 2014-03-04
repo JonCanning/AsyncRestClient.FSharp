@@ -50,7 +50,7 @@
   </Choose>
   <Import Project="$(FSharpTargetsPath)" />
   <ItemGroup>
-    <Compile Include="AsyncRestClient.fs" />
+    <Compile Include="asyncRestClient.fs" />
     <Compile Include="defaults.fs" />
     <None Include="packages.config" />
   </ItemGroup>

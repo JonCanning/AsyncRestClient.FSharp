@@ -6,11 +6,11 @@ open Suave.Http
 open System.Net.Http
 open AsyncRestClient
 
-type Put() as this = 
+type Patch() as this = 
     inherit BaseTest(OK "Hello")
     
     let request = {Name = "Foo"}
-    let (Some response) = this.client |> put request "/" |> Async.RunSynchronously
+    let (Some response) = this.client |> patch request "/" |> Async.RunSynchronously
 
     [<Fact>]
     member x.``response is returned``() =
@@ -22,5 +22,5 @@ type Put() as this =
         this.content |> should equal (serialize request)
 
     [<Fact>]
-    member x.``post HttpMethod is used``() = 
-       this.httpMethod |> should equal System.Net.Http.HttpMethod.Put
+    member x.``patch HttpMethod is used``() = 
+       this.httpMethod |> should equal <| System.Net.Http.HttpMethod("PATCH")
